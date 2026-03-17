@@ -19,7 +19,7 @@ No uso tradicional de IA, respostas tendem a ser:
 
 Este projeto resolve isso através de um **sistema de agents especializados**, onde cada agent atua de forma isolada em um domínio técnico específico.
 
-> Resultado: respostas mais precisas, padronizadas e utilizáveis em produção.
+> Resultado: respostas mais precisas, padronizadas e utilizáveis localmente (por enquanto).
 
 ---
 
