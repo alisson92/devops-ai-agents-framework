@@ -1,6 +1,7 @@
 {
   "Agent: Orchestrator": {
     "prefix": "agent-orchestrator",
+    "scope": "markdown,plaintext",
     "body": [
       "Carregue o contexto do arquivo `agents/orchestrator.md` e atue estritamente sob as regras dele.",
       "",
@@ -11,6 +12,7 @@
   },
   "Agent: Camunda Specialist": {
     "prefix": "agent-camunda",
+    "scope": "markdown,plaintext",
     "body": [
       "Carregue o contexto do arquivo `agents/camunda.md` e atue como o Camunda 8.8 Specialist.",
       "",
@@ -21,6 +23,7 @@
   },
   "Agent: Kubernetes Expert": {
     "prefix": "agent-k8s",
+    "scope": "markdown,plaintext",
     "body": [
       "Carregue o contexto do arquivo `agents/kubernetes.md` e atue como o Kubernetes Expert.",
       "",
@@ -35,6 +38,7 @@
   },
   "Agent: Helm Expert": {
     "prefix": "agent-helm",
+    "scope": "markdown,plaintext",
     "body": [
       "Carregue o contexto do arquivo `agents/helm.md` e atue como o Helm Expert.",
       "",
@@ -48,6 +52,7 @@
   },
   "Agent: Observability Expert": {
     "prefix": "agent-obs",
+    "scope": "markdown,plaintext",
     "body": [
       "Carregue o contexto do arquivo `agents/observability.md` e atue como o Observability Expert.",
       "",
@@ -58,6 +63,7 @@
   },
   "Agent: Troubleshooting Specialist": {
     "prefix": "agent-troubleshooting",
+    "scope": "markdown,plaintext",
     "body": [
       "Carregue o contexto do arquivo `agents/troubleshooting.md` e atue como o Troubleshooting Specialist.",
       "",
@@ -68,6 +74,7 @@
   },
   "Agent: Documentation Specialist": {
     "prefix": "agent-docs",
+    "scope": "markdown,plaintext",
     "body": [
       "Carregue o contexto do arquivo `agents/documentation.md` e atue como o Documentation Specialist.",
       "",
