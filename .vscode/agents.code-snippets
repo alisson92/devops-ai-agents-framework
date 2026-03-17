@@ -1,0 +1,79 @@
+{
+  "Agent: Orchestrator": {
+    "prefix": "agent-orchestrator",
+    "body": [
+      "Carregue o contexto do arquivo `agents/orchestrator.md` e atue estritamente sob as regras dele.",
+      "",
+      "Aqui está o meu cenário (analise e direcione para o especialista correto):",
+      "$1"
+    ],
+    "description": "Invoca o Orchestrator para triagem de problemas complexos."
+  },
+  "Agent: Camunda Specialist": {
+    "prefix": "agent-camunda",
+    "body": [
+      "Carregue o contexto do arquivo `agents/camunda.md` e atue como o Camunda 8.8 Specialist.",
+      "",
+      "Contexto / Problema:",
+      "$1"
+    ],
+    "description": "Invoca o especialista em Camunda 8.8 (Self Managed)."
+  },
+  "Agent: Kubernetes Expert": {
+    "prefix": "agent-k8s",
+    "body": [
+      "Carregue o contexto do arquivo `agents/kubernetes.md` e atue como o Kubernetes Expert.",
+      "",
+      "Necessidade (lembre-se do dry-run antes de aplicar):",
+      "<APP_NAME> = $1",
+      "<NAMESPACE> = $2",
+      "",
+      "Detalhes:",
+      "$3"
+    ],
+    "description": "Invoca o especialista em Kubernetes e EKS."
+  },
+  "Agent: Helm Expert": {
+    "prefix": "agent-helm",
+    "body": [
+      "Carregue o contexto do arquivo `agents/helm.md` e atue como o Helm Expert.",
+      "",
+      "Necessidade de Chart / Template:",
+      "<CHART_NAME> = $1",
+      "",
+      "Detalhes:",
+      "$2"
+    ],
+    "description": "Invoca o especialista em criação e manutenção de Helm Charts."
+  },
+  "Agent: Observability Expert": {
+    "prefix": "agent-obs",
+    "body": [
+      "Carregue o contexto do arquivo `agents/observability.md` e atue como o Observability Expert.",
+      "",
+      "Necessidade (Métricas/Dashboards/Alertas):",
+      "$1"
+    ],
+    "description": "Invoca o especialista em Prometheus, Grafana e stack open source."
+  },
+  "Agent: Troubleshooting Specialist": {
+    "prefix": "agent-troubleshooting",
+    "body": [
+      "Carregue o contexto do arquivo `agents/troubleshooting.md` e atue como o Troubleshooting Specialist.",
+      "",
+      "Siga o fluxo obrigatório (Hipóteses -> Verificações) para o seguinte incidente:",
+      "$1"
+    ],
+    "description": "Invoca o especialista em diagnóstico técnico e causa raiz."
+  },
+  "Agent: Documentation Specialist": {
+    "prefix": "agent-docs",
+    "body": [
+      "Carregue o contexto do arquivo `agents/documentation.md` e atue como o Documentation Specialist.",
+      "",
+      "Gere ou revise a seguinte documentação:",
+      "$1"
+    ],
+    "description": "Invoca o especialista em Markdown, Runbooks e Arquitetura."
+  }
+}
