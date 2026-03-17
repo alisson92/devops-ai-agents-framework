@@ -77,7 +77,7 @@ flowchart TD
 
 Veja exemplos completos de uso na prática:
 
-📁 `/examples/kubernetes-example.md` (Geração de manifestos e IaC)
+📁 `/examples/kubernetes-example.md` (Geração de manifestos e IaC)\
 📁 `/examples/orchestrator-example.md` (Roteamento de incidentes)
 
 ---
