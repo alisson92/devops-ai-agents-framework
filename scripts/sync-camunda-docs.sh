@@ -11,26 +11,28 @@ REPO_NAME="camunda-docs"
 BASE_PATH="docs/self-managed"
 TOKEN=$GITHUB_TOKEN
 
+# Extensões permitidas (Texto puro)
+ALLOWED_EXTENSIONS="md|yaml|yml|json|txt|js|css"
+# Pastas a serem ignoradas
+IGNORE_DIRS="img|assets|images|static|media"
+
 mkdir -p "$DEST_DIR"
 
-echo "🚀 Iniciando Sincronização Estável (Self-Managed)..."
+echo "🚀 Iniciando Sincronização Otimizada (Somente Texto)..."
 
 download_recursive() {
     local current_path=$1
     local local_dest=$2
 
-    # Busca a lista de itens da API
     local response=$(curl -s -H "Authorization: Bearer $TOKEN" \
                           -H "Accept: application/vnd.github+json" \
                           "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/contents/$current_path")
 
-    # Verifica erro de API
     if [[ $(echo "$response" | jq -r 'if type=="object" then .message else empty end') ]]; then
         echo "❌ Erro na API em $current_path"
         return
     fi
 
-    # Processa cada item usando JQ para evitar confusão entre arquivos e pastas
     echo "$response" | jq -c '.[]' | while read -r item; do
         local name=$(echo "$item" | jq -r '.name')
         local type=$(echo "$item" | jq -r '.type')
@@ -38,16 +40,29 @@ download_recursive() {
         local path=$(echo "$item" | jq -r '.path')
 
         if [ "$type" == "dir" ]; then
-            echo "📂 Pasta: $path"
-            mkdir -p "$local_dest/$name"
-            download_recursive "$path" "$local_dest/$name"
+            # Filtro de Pastas: Ignora se o nome da pasta estiver na lista de exclusão
+            if [[ ! "$name" =~ ^($IGNORE_DIRS)$ ]]; then
+                echo "📂 Pasta: $path"
+                mkdir -p "$local_dest/$name"
+                download_recursive "$path" "$local_dest/$name"
+            else
+                echo "🚫 Ignorando pasta de assets: $name"
+            fi
         else
-            echo "   📥 Arquivo: $name"
-            curl -s -L -H "Authorization: Bearer $TOKEN" "$download_url" -o "$local_dest/$name"
+            # Filtro de Arquivos: Só baixa se a extensão for permitida
+            if [[ "$name" =~ \.($ALLOWED_EXTENSIONS)$ ]]; then
+                echo "   📥 Arquivo: $name"
+                curl -s -L -H "Authorization: Bearer $TOKEN" "$download_url" -o "$local_dest/$name"
+            else
+                echo "   ⏭️ Pulando (não-texto): $name"
+            fi
         fi
     done
 }
 
 download_recursive "$BASE_PATH" "$DEST_DIR"
 
-echo -e "\n✅ Sincronização finalizada com sucesso!"
+# Limpeza final preventiva para garantir que nada passou
+find "$DEST_DIR" -type d -name "img" -o -name "assets" | xargs rm -rf
+
+echo -e "\n✅ Sincronização finalizada! Sua base de conhecimento está 100% limpa e otimizada."
